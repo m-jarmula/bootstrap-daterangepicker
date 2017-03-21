@@ -387,6 +387,7 @@
         }
 
         if (this.opens == 'embed') {
+          this.element.hide()
           this.show();
         }
 
