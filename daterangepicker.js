@@ -62,6 +62,7 @@
         this.buttonClasses = 'btn btn-sm';
         this.applyClass = 'btn-success';
         this.cancelClass = 'btn-default';
+        this.disableInputs = false;
 
         this.locale = {
             direction: 'ltr',
@@ -93,6 +94,17 @@
 
         //html template for the picker UI
         if (typeof options.template !== 'string' && !(options.template instanceof $))
+            if (this.disableInputs){
+              var rInputs = "";
+            }
+            else{
+              var rInputs =  '<div class="ranges">' +
+                                  '<div class="range_inputs">' +
+                                      '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
+                                      '<button class="cancelBtn" type="button"></button>' +
+                                  '</div>' +
+                              '</div>';
+            }
             options.template = '<div class="daterangepicker dropdown-menu">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input">' +
@@ -115,13 +127,8 @@
                       '</div>' +
                     '</div>' +
                     '<div class="calendar-table"></div>' +
-                '</div>' +
-                '<div class="ranges">' +
-                    '<div class="range_inputs">' +
-                        '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
-                        '<button class="cancelBtn" type="button"></button>' +
-                    '</div>' +
-                '</div>' +
+                '</div>' + rInputs +
+
             '</div>';
 
         this.parentEl = (options.parentEl && $(options.parentEl).length) ? $(options.parentEl) : $(this.parentEl);
