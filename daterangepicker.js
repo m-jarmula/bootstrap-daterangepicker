@@ -94,7 +94,7 @@
 
         //html template for the picker UI
         if (typeof options.template !== 'string' && !(options.template instanceof $))
-            if (this.disableInputs){
+            if (options.disableInputs){
               var rInputs = "";
             }
             else{
