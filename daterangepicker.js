@@ -595,7 +595,7 @@
         },
 
         updateCalendars: function() {
-
+            this.element.trigger('updated.endDate', this);
             if (this.timePicker) {
                 var hour, minute, second;
                 if (this.endDate) {
@@ -782,6 +782,7 @@
 
             //adjust maxDate to reflect the dateLimit setting in order to
             //grey out end dates beyond the dateLimit
+
             if (this.endDate == null && this.dateLimit) {
                 var maxLimit = this.startDate.clone().add(this.dateLimit).endOf('day');
                 if (!maxDate || maxLimit.isBefore(maxDate)) {
@@ -833,7 +834,6 @@
                     //highlight the currently selected end date
                     if (this.endDate != null && calendar[row][col].format('YYYY-MM-DD') == this.endDate.format('YYYY-MM-DD'))
                         classes.push('active', 'end-date');
-                        this.element.trigger('updated.endDate', this);
 
                     //highlight dates in-between the selected dates
                     if (this.endDate != null && calendar[row][col] > this.startDate && calendar[row][col] < this.endDate)
